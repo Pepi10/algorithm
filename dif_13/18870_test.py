@@ -26,16 +26,16 @@
 
 import sys
 
-roof = int(sys.stdin.readline().rstrip())
+_ = sys.stdin.readline().rstrip()
+num_li = list(map(int, sys.stdin.readline().rstrip().split(' ')))
+sort_li = sorted(set(num_li))
+temp_di = dict()
 
-temp_di = {}
-for _ in range(roof):
-    val = sys.stdin.readline().rstrip()
-    ind = len(val)
-    if ind not in temp_di:
-        temp_di[ind] = []
-    temp_di[ind].append(val)
+for ind, val in enumerate(sort_li):
+    temp_di[val] = ind
 
-for ind in sorted(temp_di):
-    for val in sorted(temp_di[ind]):
-        print(val)
+res = list()
+
+for num in num_li:
+    res.append(temp_di[num])
+print(*res)
