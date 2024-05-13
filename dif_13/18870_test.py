@@ -27,18 +27,15 @@
 import sys
 
 roof = int(sys.stdin.readline().rstrip())
-num_li = list(map(int, sys.stdin.readline().rstrip().split()))
 
-sort_li = sorted(list(enumerate(num_li)), key = lambda x : x[1])
-
-min_num = min(num_li)
-ii = 0
-
+temp_di = {}
 for _ in range(roof):
-    if sort_li[_][1] > min_num:
-        ii +=1
-        num_li[sort_li[_][0]] = ii
-        min_num = sort_li[_][1]
-    else:
-        num_li[sort_li[_][0]] = ii
-print(*num_li)
+    val = sys.stdin.readline().rstrip()
+    ind = len(val)
+    if ind not in temp_di:
+        temp_di[ind] = []
+    temp_di[ind].append(val)
+
+for ind in sorted(temp_di):
+    for val in sorted(temp_di[ind]):
+        print(val)
